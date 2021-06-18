@@ -1,0 +1,33 @@
+.client-illustration-content { position: relative;
+    *[class*='col-md'] { padding:0; }
+    .client-add-panel { width:calc(100% - 145px); }
+    .add-client { position:absolute; top:20px; right:20px; }
+    .client-result-panel { border-top:1px #999999 solid; display:flex; padding:0; position:relative;
+        &::before { content:""; background:#999999; width:1px; height:100%; position:absolute; left:250px; }
+        .col-left { width:250px; }
+        .col-right { flex:1; }
+        .fa { font-size:26px; color:#cccccc; vertical-align:middle; }
+        .client-name { display: inline-block; vertical-align:middle; margin-left:10px; }
+    }
+    .fa { font-size:26px; color:#cccccc; vertical-align:middle; }
+    .client-view-list { max-height:650px; overflow:hidden; overflow-y:scroll;
+        ul li a { padding:10px; display:block; transition:0.2s all ease; cursor:pointer;
+            &:hover, &.active { background:rgba(0,0,0,0.1);
+                .fa { color:rgba(0,0,0,0.3); }
+            }
+        }
+    }
+    .client-name-panel { background:rgba(0,0,0,0.1); padding:20px;
+        .fa { font-size:40px; color:rgba(0,0,0,0.3) ; }
+    }
+    .client-list-panel {
+        .search-widget { border:0; border-bottom:1px #999999 solid; } 
+    }
+    .client-details-panel {
+        .search-widget { margin-bottom:20px; max-width:300px; }
+        h3 { width:calc(100% - 40px); }
+        .edit-client { position:absolute; top:20px; right:20px;
+            &:hover { text-decoration:underline; }
+        }
+    }
+}

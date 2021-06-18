@@ -1,0 +1,19 @@
+export interface IClient {
+    Clients:string,
+    ClientIllustrations:string,
+    id:number,
+    firstName:string,
+    lastName:string,
+    dob:string,
+    email:string,
+    privacy:string,
+    Illustrations:string
+    illustrationId:number,
+    illustrationName:string,
+    createdDate:string,
+    status:string,
+    archived:string,
+    archivedId:number,
+    archivedDate:string,
+    comments:string
+}

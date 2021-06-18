@@ -1,0 +1,41 @@
+.client-illustration-content {
+    display:flex; margin-bottom:20px;
+    .panel-content.row { margin-bottom:0px; }
+    .col-left { max-width:calc(100% - 280px); margin-right:20px;
+        .tab-panel .ui-tab { margin-bottom:20px; }
+    }
+    .row { margin-bottom:20px; }
+    .col { margin-right:10px;
+        &:last-child { margin-right:0; }
+    }
+    .label-text { font-weight:bold; display:block; margin:0 0 10px; color:#666666; }
+    .label-value { font-size:26px; color:#999999; }
+    .income-viability-summary {
+        table th:not(:first-child), td:not(:first-child) { text-align:center;}
+    }
+    .col-right { background:#f2f2f2; min-width:280px; max-width:100%; }
+    .illustration-setting { padding:15px;
+        .button-panel {
+            button { display:block; margin:0 0 15px; width:100%;
+                &:last-child { margin-bottom:0; }
+            }
+        }
+    }
+    .illustration-navi {
+        margin-bottom:15px;
+        li a {
+            display:block;
+            padding:15px 10px;
+            border-bottom:1px #999999 solid;
+        }
+    }
+    
+}
+
+.custom-tab ul { padding-top:20px; display:flex;
+    .menu-option { padding:10px; display:block;
+        &:hover {
+            background-color: #7a9d96;
+        }
+    }
+}

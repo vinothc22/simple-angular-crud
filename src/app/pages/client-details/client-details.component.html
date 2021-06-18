@@ -1,0 +1,199 @@
+<section class="block-content client-illustration-content">
+  <div class="panel-content client-add-panel">
+    <h2>Client and Illustrations</h2>
+    <p>Select client to create a new illustration, or open an wxisting illustration to complete or review this</p>
+    <div class="add-client">
+      <button class="btn btn-transparent" (click)="openDialog()">Add New Client</button>
+    </div>
+  </div>
+  <div class="panel-content client-result-panel">
+    <div class="col-left client-list-panel">
+      <div class="search-widget">
+        <fe-search (searchEvent)="handleClientSearch($event)" [placeHolderText]="'Search clients'"></fe-search>
+      </div>
+      <div class="client-view-list">
+        <p>{{errorMessage}}</p>
+        <ul>
+          <li *ngFor="let client of clients | filter:searchClient"><a (click)="onSelect(client)"
+              [class.active]="isSelected(client)"><i class="fa fa-user-circle"></i> <span
+                class="client-name">{{client.firstName + " " + client.lastName}}</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <ng-template #noIllustrationRecord>
+      <div class="col-right client-details-panel">
+        <div class="panel-content">
+          No record has found please click the client to view the illustrations
+        </div>
+      </div>
+    </ng-template>
+
+    <div class="col-right client-details-panel" *ngIf="clientId; else noIllustrationRecord">
+      <div class="client-name-panel">
+        <h3><i class="fa fa-user-circle"></i> <span
+            class="client-name">{{clients[clientId - 1]?.firstName + " " + clients[clientId - 1]?.lastName}}</span></h3>
+        <a (click)="openEditDialog(clients[clientId - 1])" class="edit-client">Edit</a>
+      </div>
+      <div class="panel-content">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="search-widget">
+              <fe-search (searchEvent)="handleClientIllustrationSearch($event)"
+                [placeHolderText]="'Search illustrations'"></fe-search>
+            </div>
+          </div>
+          <div class="create-illustration col-md-3 text-right">
+            <a routerLink="/create-illustration" class="btn btn-primary">Create Illustration</a>
+          </div>
+        </div>
+        <div class="tab-panel">
+          <ul class="ui-tab">
+            <li><a [class.active]="viewMode == 'tab-illustrations'"
+                (click)="viewMode ='tab-illustrations'">Illustrations</a></li>
+            <li><a [class.active]="viewMode == 'tab-archived'" (click)="viewMode ='tab-archived'">Archived</a></li>
+          </ul>
+          <div class="tab-container" [ngSwitch]="viewMode">
+            <div class="tab-content-body" id="tab-illustrations" *ngSwitchCase="'tab-illustrations'">
+              <table>
+                <tr>
+                  <th class="checkbox-col"><input type="checkbox" /></th>
+                  <th class="illustration-name">Illustration Name</th>
+                  <th class="date-col">Created Date</th>
+                  <th>Status</th>
+                  <th>&nbsp;</th>
+                </tr>
+                <tr
+                  *ngFor="let illustration of clientIllustrations[clientId - 1]?.illustrations | filter:searchClientIllustration">
+                  <td class="checkbox-col"><input type="checkbox" /></td>
+                  <td><a
+                      (click)="gotoClienIllustrationDetail(clients[clientId - 1], illustration.illustrationId, menuOptions[0].url)">{{illustration.illustrationName}}</a>
+                  </td>
+                  <td class="date-col">{{illustration.createdDate}}</td>
+                  <td>{{illustration.status}}</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </table>
+            </div>
+            <div class="tab-content-body" id="tab-archived" *ngSwitchCase="'tab-archived'">
+              <table>
+                <tr>
+                  <th class="checkbox-col"><input type="checkbox" /></th>
+                  <th class="illustration-name">Illustration Name</th>
+                  <th class="date-col">Archived Date</th>
+                  <th>Comments</th>
+                  <th>Status</th>
+                  <th>&nbsp;</th>
+                </tr>
+                <tr
+                  *ngFor="let archive of clientIllustrations[clientId - 1]?.archived | filter:searchClientIllustration">
+                  <td class="checkbox-col"><input type="checkbox" /></td>
+                  <td>{{archive.illustrationName}}</td>
+                  <td class="date-col">{{archive.archivedDate}}</td>
+                  <td>{{archive.comments}}</td>
+                  <td>{{archive.status}}</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="ui-dialog" id="add-new-client-dialog" *ngIf="isDialogOpen">
+  <div class="ui-dialog-panel">
+    <form [formGroup]="addClientForm" (ngSubmit)="addNewClient()" *ngIf="!isEditClient">
+      <div class="ui-dialog-content">
+        <div class="ui-dialog-header">
+          <h3>Add Client</h3>
+          <a class="close-dialog" (click)="closeDialog()"><span>&times;</span></a>
+        </div>
+        <div class="ui-dialog-body">
+          <div class="form-group hidden">
+            <input type="text" class="form-control" formControlName="id" placeholder="id" name="id" id="id" />
+          </div>
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" class="form-control" formControlName="firstName" id="firstName" name="firstName"
+              autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" class="form-control" formControlName="lastName" id="lastName" name="lastName"
+              autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="text" class="form-control" formControlName="dob" id="dob" name="dob" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="text" class="form-control" formControlName="email" id="email" name="email"
+              autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label for="privacy">Privacy:</label>
+            <select formControlName="privacy" id="privacy" name="privacy">
+              <option value="accessible-to-me">Accessible to me only</option>
+              <option value="accessible-to-everyone">Accessible to everyone</option>
+              <option value="accessible-to-group">Accessible to my group</option>
+            </select>
+          </div>
+        </div>
+        <div class="ui-dialog-footer">
+          <div class="form-group">
+            <button class="btn btn-secondary" (click)="closeDialog()">Cancel</button>
+            <button class="btn btn-primary">Add</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <form [formGroup]="editClientForm" (ngSubmit)="updateClient(clients[clientId - 1])" *ngIf="isEditClient">
+      <div class="ui-dialog-content">
+        <div class="ui-dialog-header">
+          <h3>Edit Client</h3>
+          <a class="close-dialog" (click)="closeDialog()"><span>&times;</span></a>
+        </div>
+        <div class="ui-dialog-body">
+          <div class="form-group hidden">
+            <input type="text" class="form-control" formControlName="id" placeholder="id" name="id" id="id" />
+          </div>
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" class="form-control" formControlName="firstName" id="firstName" name="firstName"
+              autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" class="form-control" formControlName="lastName" id="lastName" name="lastName"
+              autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="text" class="form-control" formControlName="dob" id="dob" name="dob" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="text" class="form-control" formControlName="email" id="email" name="email"
+              autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label for="privacy">Privacy:</label>
+            <select formControlName="privacy" id="privacy" name="privacy">
+              <option value="accessible-to-me">Accessible to me only</option>
+              <option value="accessible-to-everyone">Accessible to everyone</option>
+              <option value="accessible-to-group">Accessible to my group</option>
+            </select>
+          </div>
+        </div>
+        <div class="ui-dialog-footer">
+          <div class="form-group">
+            <button class="btn btn-secondary" (click)="closeDialog()">Cancel</button>
+            <button class="btn btn-primary">Edit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

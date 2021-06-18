@@ -1,0 +1,172 @@
+{
+  "Clients": [
+    {
+      "id": 1,
+      "firstName": "Corey",
+      "lastName": "Calzoni",
+      "dob": "19/06/1986",
+      "email": "Corey@email.com",
+      "privacy": "accessible-to-group"
+    },
+    {
+      "id": 2,
+      "firstName": "Kadin",
+      "lastName": " Dokidis",
+      "dob": "19/06/1986",
+      "email": "Kadin@email.com",
+      "privacy": "accessible-to-everyone"
+    },
+    {
+      "id": 3,
+      "firstName": "Wilson",
+      "lastName": " Bregson",
+      "dob": "19/06/1986",
+      "email": "Wilson@email.com",
+      "privacy": "accessible-to-everyone"
+    },
+    {
+      "id": 4,
+      "firstName": "Brandon",
+      "lastName": "Torff",
+      "dob": "19/06/1986",
+      "email": "Brandon@email.com",
+      "privacy": "accessible-to-everyone"
+    },
+    {
+      "id": 5,
+      "firstName": "Carter",
+      "lastName": "Botosh",
+      "dob": "19/06/1986",
+      "email": "Carter@email.com",
+      "privacy": "accessible-to-me"
+    },
+    {
+      "id": 6,
+      "firstName": "Alfredo",
+      "lastName": "Press",
+      "dob": "19/06/1986",
+      "email": "Alfredo@email.com",
+      "privacy": "accessible-to-group"
+    },
+    {
+      "id": 7,
+      "firstName": "Madelyn",
+      "lastName": "Baptista",
+      "dob": "19/06/1986",
+      "email": "Madelyn@email.com",
+      "privacy": "accessible-to-group"
+    },
+    {
+      "id": 8,
+      "firstName": "Hanna",
+      "lastName": "Lubin",
+      "dob": "19/06/1986",
+      "email": "Corey@email.com",
+      "privacy": "only me"
+    },
+    {
+      "id": 9,
+      "firstName": "Gustavo",
+      "lastName": "Vaccaro",
+      "dob": "19/06/1986",
+      "email": "Corey@email.com",
+      "privacy": "only me"
+    },
+    {
+      "id": 10,
+      "firstName": "Kadin",
+      "lastName": "Botosh",
+      "dob": "19/06/1986",
+      "email": "Corey@email.com",
+      "privacy": "only me"
+    },
+    {
+      "id": 11,
+      "firstName": "Leo",
+      "lastName": "George",
+      "dob": "06/10/1983",
+      "email": "Leo@emailxyz.com",
+      "privacy": "accessible-to-everyone"
+    },
+    {
+      "id": 12,
+      "firstName": "Alfredo",
+      "lastName": "Ekstrom",
+      "dob": "19/06/1986",
+      "email": "Alfredo@email.com",
+      "privacy": "accessible-to-everyone"
+    },
+    {
+      "id": 13,
+      "firstName": "Tiana",
+      "lastName": "Arcand",
+      "dob": "19/06/1986",
+      "email": "Corey@email.com",
+      "privacy": "only me"
+    },
+    {
+      "id": 14,
+      "firstName": "Ashlynn",
+      "lastName": "Phillips",
+      "dob": "19/06/1986",
+      "email": "Corey@email.com",
+      "privacy": "only me"
+    },
+    {
+      "id": 15,
+      "firstName": "Romin",
+      "lastName": "Irani",
+      "dob": "19/06/1986",
+      "email": "Corey@email.com",
+      "privacy": "only me"
+    },
+    {
+      "id": 16,
+      "firstName": "Tom",
+      "lastName": "Hanks",
+      "dob": "19/06/1986",
+      "email": "Corey@email.com",
+      "privacy": "only me"
+    },
+    {
+      "id": 17,
+      "firstName": "Neil",
+      "lastName": "Irani",
+      "dob": "19/06/1986",
+      "email": "Corey@email.com",
+      "privacy": "only me"
+    },
+    {
+      "id": 18,
+      "firstName": "Tom",
+      "lastName": "Cruise",
+      "dob": "19/06/1986",
+      "email": "Corey@email.com",
+      "privacy": "only me"
+    },
+    {
+      "id": 19,
+      "firstName": "Maria",
+      "lastName": "Sharapova",
+      "dob": "19/06/1986",
+      "email": "Corey@email.com",
+      "privacy": "only me"
+    },
+    {
+      "id": 20,
+      "firstName": "James",
+      "lastName": "Bond",
+      "dob": "19/06/1986",
+      "email": "James@email.com",
+      "privacy": "accessible-to-me"
+    },
+    {
+      "id": 21,
+      "firstName": "VinothC",
+      "lastName": "Kumar",
+      "dob": "02/05/1986",
+      "email": "xxx@zzz.com",
+      "privacy": "accessible-to-me"
+    }
+  ]
+}

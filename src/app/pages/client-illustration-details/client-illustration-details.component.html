@@ -1,0 +1,129 @@
+<section class="block-content client-illustration-content">
+  <div class="panel-content row">
+    <div class="col-left">
+      <div class="panel-widget">
+        <ngb-tabset [activeId]="activeTabUrl" (tabChange)="onTabChange($event)">
+          <ngb-tab *ngFor="let tab of tabs; let index = index" [id]="tab.url">
+            <ng-template ngbTabTitle>
+              <span>{{tab.name}}</span>
+              <span class="icon-times" (click)="closeTab(index, $event)">&times;</span>
+            </ng-template>
+            <ng-template ngbTabContent>
+              <router-outlet></router-outlet>
+              <span>{{tab.url}}</span>
+              <p class="date-as-text">Decumulation Illustration as at
+                {{clientIllustrations[clientId - 1]?.illustrations[clientIllustrationId - 1].createdDate}} for</p>
+              <h3><span
+                  class="client-name">{{clients[clientId - 1]?.firstName + " " + clients[clientId - 1]?.lastName}}</span>
+              </h3>
+              <p>The Decumulation tool splits the total investment amount between two portfolios, one to protect against markets falls in the initial years and the other to provide long term growth. The split is dependent on the gross income rate required and the consequential need to balance sequencing and shortfall risk. Sequencing risk is when a market fall early on in your retirement leads you to withdrawing a larger percentage than initially envisaged. Shortfall risk is when your portfolio does not grow fast enough to sustain your retirement and you end up exhausting your savings prematurely. The more you protect against one of these risks the greater the increase in the other risk, the illustrator finds the best compromise between the two.</p>
+              <p>Stochastic modelling is used to run through 1,000 different theoretical market scenarios to assess the feasibility of the desired income rate. The results of this are illustrated in the income viability table below, which illustrate the number of scenarios that have been exhausted in any one year. For example, an income viability of 30% in year 40, means that 700 of the 1,000 scenarios have run out of money by this time. This suggests that in 70% of scenarios you will have to reduce your income requirements to prevent this happening. For this reason, regular reviews are recommended.</p>
+              <p>It is important that investors are comfortable with the risks that they are taking and the chances that they may need to modify their desired income rate.</p>
+              
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+        <!-- <div class="tab-panel">
+          <ul class="ui-tab">
+            <li><a class="menu-option" [class.active]="isActiveTab">{{menuOptions[0].name}} <span class="icon-times">&times;</span></a></li>
+              <li *ngFor="let tab of tabs; let index = index"><a class="menu-option">{{tab.name}} <span class="icon-times" (click)="closeTab(index, $event)">&times;</span></a></li>
+            <li *ngFor="let tab of tabs; let index = index"><a class="menu-option">{{tab.name}} <span class="icon-times" (click)="closeTab(index, $event)">&times;</span></a></li>
+          </ul>
+          <div class="tab-container client-illustration-tabcontent">
+            <div class="tab-content-body">
+              <p class="date-as-text">Decumulation Illustration as at
+                {{clientIllustrations[clientId - 1]?.illustrations[clientIllustrationId - 1].createdDate}} for</p>
+              <h3><span
+                  class="client-name">{{clients[clientId - 1]?.firstName + " " + clients[clientId - 1]?.lastName}}</span>
+              </h3>
+              <p>The Decumulation tool splits the total investment amount between two portfolios, one to protect against markets falls in the initial years and the other to provide long term growth. The split is dependent on the gross income rate required and the consequential need to balance sequencing and shortfall risk. Sequencing risk is when a market fall early on in your retirement leads you to withdrawing a larger percentage than initially envisaged. Shortfall risk is when your portfolio does not grow fast enough to sustain your retirement and you end up exhausting your savings prematurely. The more you protect against one of these risks the greater the increase in the other risk, the illustrator finds the best compromise between the two.</p>
+              <p>Stochastic modelling is used to run through 1,000 different theoretical market scenarios to assess the feasibility of the desired income rate. The results of this are illustrated in the income viability table below, which illustrate the number of scenarios that have been exhausted in any one year. For example, an income viability of 30% in year 40, means that 700 of the 1,000 scenarios have run out of money by this time. This suggests that in 70% of scenarios you will have to reduce your income requirements to prevent this happening. For this reason, regular reviews are recommended.</p>
+              <p>It is important that investors are comfortable with the risks that they are taking and the chances that they may need to modify their desired income rate.</p>
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <div class="panel-widget">
+        <h4>Investment Details</h4>
+        <div class="row">
+          <div class="col">
+            <span class="label-text">Investment Amount</span>
+            <span class="label-value">&pound;400,000</span>
+          </div>
+          <div class="col">
+            <span class="label-text">Inital Annual Amount</span>
+            <span class="label-value">&pound;25,000</span>
+          </div>
+          <div class="col">
+            <span class="label-text">Annual Income Rate</span>
+            <span class="label-value">6.25%</span>
+          </div>
+          <div class="col">
+            <span class="label-text">Annula Charges<sup>*</sup></span>
+            <span class="label-value">1.50%</span>
+          </div>
+          <div class="col">
+            <span class="label-text">40 Yr Income Viability</span>
+            <span class="label-value">18.50%</span>
+          </div>
+        </div>
+        <p class="caveat-text">* Annual Charges excludes OCF. Charges Breakdown = Adviser 1.00%, Platform 0.25%, DFM
+          0.25%</p>
+      </div>
+      <div class="panel-widget">
+        <h4>Portfolio Split</h4>
+      </div>
+      <div class="panel-widget">
+        <h4>Income Viability</h4>
+      </div>
+      <div class="panel-widget">
+        <h4>Income Plan (Thousands)</h4>
+      </div>
+      <div class="panel-widget income-viability-summary">
+        <h4>Income Viability Summary</h4>
+        <p>The plans are simulated across 1,000 market scenarios to assess their deliverability. The income viability
+          score indicates how many times the plan reached that date without beign exhausted. It can be thought of as the
+          likelihood that you will not need to reduce your income.</p>
+        <table>
+          <tr>
+            <th>Year</th>
+            <th>5 Years (Jan 2020)</th>
+            <th>15 Years (Jan 2035)</th>
+            <th>25 Years (Jan 2045)</th>
+            <th>35 Years (Jan 2060)</th>
+          </tr>
+          <tr>
+            <td>Annual Income including growth</td>
+            <td>&pound;26,105</td>
+            <td>&pound;28,737</td>
+            <td>&pound;31,743</td>
+            <td>&pound;35,064</td>
+          </tr>
+          <tr>
+            <td>Income Viability</td>
+            <td>100%</td>
+            <td>79.6%</td>
+            <td>32.0%</td>
+            <td>19.8%</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+    <div class="col-right">
+      <div class="panel-widget illustration-setting">
+        <ul class="illustration-navi">
+          <li><a [class.active]="activeTabUrl" (click)="addTab(menuOptions[1].url)"><span class="icon-review"></span> Review Illustration</a></li>
+          <li><a (click)="addTab(menuOptions[2].url)"><span class="icon-update"></span> Update Investment Details</a></li>
+          <li><a><span class="icon-setting"></span> Chart Settings</a></li>
+        </ul>
+        <div class="button-panel">
+          <button class="btn btn-secondary">Save</button>
+          <button class="btn btn-secondary">Accept Review</button>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+</section>

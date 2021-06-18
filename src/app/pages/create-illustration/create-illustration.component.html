@@ -1,0 +1,102 @@
+<section class="block-content ">
+  <div class="panel-content">
+    <div class="pad-top row">
+      <div class="col-md-12"><a class="back-to-btn" (click)="backToClients()"><span></span></a></div>
+    </div>
+  </div>
+  <div class="panel-content">
+    <div class="create-illustration-content">
+      <div class="row form-group">
+        <div class="col-md-12">
+          <h2>Investment Details</h2>
+          <p>Enter amount to invest, annual income required and charges</p>
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-3"><label class="label-title form-label">Invest Amount</label></div>
+        <div class="col-md-6"><label class="form-label">Amount</label><input class="amount-text form-control"
+            type="text" placeholder="£400,000"></div>
+        <div class="col-md-3"></div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-3"><label class="label-title form-label">Initial Annual Income <span><a
+                class="icon icon-help" href="/">?</a></span></label></div>
+        <div class="col-md-3"><label class="form-label">Percentage</label><input class="text-right form-control"
+            type="text" placeholder="%"><span class="or-text">Or</span></div>
+        <div class="col-md-3"><label class="form-label">Amount</label><input class="form-control" type="text"
+            placeholder="£25000"></div>
+        <div class="addition-periods col-md-3"><button class="btn btn-secondary" type="button" (click)="addIncomePeriod()">{{isAddIncomePeriod ? 'Hide' : 'Add'}} additional income periods</button></div>
+      </div>
+      <div class="row form-group" *ngIf="isAddIncomePeriod">
+        <div class="col-md-3"><label class="label-title form-label">Subsequent Annual Income <span><a
+                class="icon icon-help" href="/">?</a></span></label></div>
+        <div class="col-md-3"><label class="form-label">Year Starting</label><select class="form-control">
+            <option value="mar-2021-y2">Mar 2021 (Yr 2)</option>
+            <option value="apr-2021-y2">Apr 2021 (Yr 2)</option>
+            <option value="sep-2021-y3">Sep 2021 (Yr 3)</option>
+          </select><span class="or-text">And</span></div>
+        <div class="col-md-3"><label class="form-label">Amount</label><input class="form-control" type="text" placeholder="£"></div>
+        <div class="addition-periods col-md-3"><button class="btn-addition btn btn-secondary" type="button">+</button>
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-3"><label class="label-title form-label">Total Annual Charges <span><a class="icon icon-help"
+                href="/">?</a></span><br>exc. OCF</label></div>
+        <div class="col-md-3"><label class="form-label">Percentage</label><input class="text-right form-control"
+            type="text" placeholder="%"><span class="or-text">Or</span></div>
+        <div class="col-md-3"><label class="form-label">Amount</label><input class="form-control" type="text"
+            placeholder="£25000"></div>
+        <div class="addition-periods col-md-3"><button class="btn btn-secondary" type="button" (click)="addBreadowns()">{{isAddBreadowns ? 'Hide' : 'Add'}} charges breakdown</button></div>
+      </div>
+      <div *ngIf="isAddBreadowns">
+        <div class="row form-group">
+          <div class="col-md-3"><label class="label-title form-label">Advisor Charges</label></div>
+          <div class="col-md-3"><label class="form-label">Percentage</label><input class="text-right form-control"
+              type="text" placeholder="%"><span class="or-text">Or</span></div>
+          <div class="col-md-3"><label class="form-label">Amount</label><input class="form-control" type="text"
+              placeholder="£25000"></div>
+          <div class="addition-periods col-md-3">&nbsp;</div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-3"><label class="label-title form-label">Platform Charges</label></div>
+          <div class="col-md-3"><label class="form-label">Percentage</label><input class="text-right form-control"
+              type="text" placeholder="%"><span class="or-text">Or</span></div>
+          <div class="col-md-3"><label class="form-label">Amount</label><input class="form-control" type="text"
+              placeholder="£25000"></div>
+          <div class="addition-periods col-md-3">&nbsp;</div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-3"><label class="label-title form-label">DFM Charges</label></div>
+          <div class="col-md-3"><label class="form-label">Percentage</label><input class="text-right form-control"
+              type="text" placeholder="%"><span class="or-text">Or</span></div>
+          <div class="col-md-3"><label class="form-label">Amount</label><input class="form-control" type="text"
+              placeholder="£25000"></div>
+          <div class="addition-periods col-md-3">&nbsp;</div>
+        </div>
+      </div>
+      <div class="row form-group" *ngIf="isAlertOpened">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6">
+          <p><b><span class="icon icon-alert">!</span>The total annual charges is higher than 1.5%</b></p>
+          <p>The illustration has been calibrated around a maximum charges figure of 1.5%, an increament in this figure
+            has not been modelled and risks returning sub-optiomal results</p>
+          <form>
+            <div class="mb-3">
+              <div class="custom-control custom-checkbox"><input class="custom-control-input" id="add-group-logo"
+                  type="checkbox"><label title="" class="custom-control-label" for="add-group-logo">Add group logo from
+                  Aanalytics</label></div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+      </div>
+      <div class="align-item-center row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-9">
+          <div class="btn-toolbar" role="toolbar"><button class="btn btn-secondary" type="button">Clear
+              All</button><button class="btn btn-primary" type="button" (click)="calculateAlert()">Calculate</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
